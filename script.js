@@ -5,8 +5,13 @@ function createGrid(cells) {
   for (let i = 0; i < cells; i++) {
     const cell = document.createElement("div");
     cell.classList = "cellClass";
+    cell.style.width = "33.75px";
+    cell.style.height = "33.75px";
     cell.addEventListener("mouseover", function () {
-      cell.classList.add("touched");
+      let currentOpacity = parseFloat(cell.style.opacity) || 1;
+      if (currentOpacity > 0) {
+        cell.style.opacity = currentOpacity - 0.1;
+      }
     });
     console.log(cell.classList);
     grid.appendChild(cell);
@@ -14,10 +19,31 @@ function createGrid(cells) {
 }
 
 function resetGrid() {
-  let targetCells = document.getElementsByClassName("cellClass");
-  console.log("Hello!");
+  let targetCells = document.querySelectorAll(".cellClass");
   targetCells.forEach((div) => {
     div.classList.remove("touched");
   });
 }
+
+function generateNewGrid() {
+  grid.innerHTML = "";
+  let gridSize = prompt("Choose a new grid size");
+  let gridTotal = gridSize * gridSize;
+  let newCellSize = 540 / gridSize;
+  for (let i = 0; i < gridTotal; i++) {
+    const cell = document.createElement("div");
+    cell.classList = "cellClass";
+    cell.style.width = `${newCellSize}px`;
+    cell.style.height = `${newCellSize}px`;
+    cell.addEventListener("mouseover", function () {
+      let currentOpacity = parseFloat(cell.style.opacity) || 1;
+      if (currentOpacity > 0) {
+        cell.style.opacity = currentOpacity - 0.1;
+      }
+    });
+    console.log(cell.classList);
+    grid.appendChild(cell);
+  }
+}
+
 createGrid(cells);
