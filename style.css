@@ -1,13 +1,14 @@
 .sketchingGrid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   justify-self: center;
   width: 540px;
+  height: 540px;
+  background-color: black;
 }
 
 .cellClass {
-  border: 1px solid red;
-  width: 30px;
-  height: 30px;
+  background-color: white;
+  box-sizing: border-box;
+  border: 1px solid black;
 }
