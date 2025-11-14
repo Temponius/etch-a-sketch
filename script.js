@@ -21,13 +21,13 @@ function createGrid(cells) {
 function resetGrid() {
   let targetCells = document.querySelectorAll(".cellClass");
   targetCells.forEach((div) => {
-    div.classList.remove("touched");
+    div.style.opacity = 1;
   });
 }
 
 function generateNewGrid() {
   grid.innerHTML = "";
-  let gridSize = prompt("Choose a new grid size");
+  let gridSize = prompt("Choose a new grid size (ex: 16 for a 16x16 grid)");
   let gridTotal = gridSize * gridSize;
   let newCellSize = 540 / gridSize;
   for (let i = 0; i < gridTotal; i++) {
